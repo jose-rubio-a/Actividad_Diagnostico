@@ -1,9 +1,13 @@
 #include <stdio.h>
 #define CANTIDAD_ENTEROS 5
+#define TAMANO_TEXTO 25
 void capturaEnteros();
 int menuPrograma();
+void mostrar(int n,char arreglo[]);
 int main(){
     int continuarPrograma;
+    int n;
+    char arreglo[TAMANO_TEXTO+1];
     continuarPrograma=1;
     do
     {
@@ -11,6 +15,12 @@ int main(){
         {
         case 1: capturaEnteros(); break;
         case 2:
+            printf("Dame el texto a mostrar: ");
+            getchar();
+            fgets(arreglo,TAMANO_TEXTO+1,stdin);
+            printf("Dame la cantidad de veces a repetir: ");
+            scanf("%d",&n);
+            mostrar(n,arreglo);
             break;
         case 3:
             break;
@@ -59,4 +69,12 @@ void capturaEnteros()
     promedio=(float)suma/CANTIDAD_ENTEROS;
     printf("Suma: %d\n",suma);
     printf("Promedio: %0.2f\n",promedio);
+}
+void mostrar(int n,char arreglo[])
+{
+    int i;
+    for(i=0; i<n; i++)
+    {
+        printf("%s",arreglo);
+    }
 }
