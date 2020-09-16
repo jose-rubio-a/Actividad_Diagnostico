@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include "Personaje.h"
 #define CANTIDAD_ENTEROS 5
 #define TAMANO_TEXTO 25
 void capturaEnteros();
 int menuPrograma();
 void mostrar(int n,char arreglo[]);
+void menuPersonajes();
 int main(){
     int continuarPrograma;
     int n;
@@ -22,13 +24,9 @@ int main(){
             scanf("%d",&n);
             mostrar(n,arreglo);
             break;
-        case 3:
-            break;
-        case 4:
-            continuarPrograma=0;
-            break;
-        default:
-            printf("Opcion no valida\n");
+        case 3: menuPersonajes(); break;
+        case 4: continuarPrograma=0; break;
+        default: printf("Opcion no valida\n");
         }
         if(continuarPrograma)
         {
@@ -77,4 +75,33 @@ void mostrar(int n,char arreglo[])
     {
         printf("%s",arreglo);
     }
+}
+void menuPersonajes()
+{
+    int opcion;
+    int continuar;
+    continuar=1;
+    do
+    {
+        printf("Menu Personajes:\n");
+        printf("1) Capturar Personaje\n");
+        printf("2) Mostrar Personajes\n");
+        printf("3) Salir\n");
+        printf("Opcion: ");
+        scanf("%d",&opcion);
+        switch(opcion)
+        {
+        case 1: capturaPersonaje(); break;
+        case 2: mostrarPersonajes(); break;
+        case 3: continuar=0; break;
+        default: printf("Opcion no valida");
+        }
+        if(continuar)
+        {
+            getchar();
+            printf("Presione entrar para continuar...");
+            getchar();
+        }
+    }
+    while(continuar);
 }
